@@ -198,6 +198,8 @@ HTML = f"""<!doctype html>
   function loadGifs() {{
     if (gifsLoaded) return; gifsLoaded = true;
     document.querySelectorAll('.anim[data-gif]').forEach(function (img) {{
+      // eager, not lazy: a deferred clip means the first hover plays nothing
+      img.loading = 'eager';
       img.src = img.getAttribute('data-gif');
     }});
   }}
