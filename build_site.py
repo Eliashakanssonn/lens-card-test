@@ -120,7 +120,6 @@ HTML = f"""<!doctype html>
   .phone .badge {{ font-size: 10px; padding: 4px 8px; border-radius: 12px; }}
   .phones {{ display: flex; gap: 40px; flex-wrap: wrap; }}
 
-  .note {{ margin-top: 26px; font-size: 14px; line-height: 1.7; color: #7a7a7a; max-width: 700px; }}
 
   @media (max-width: 1080px) {{ .grid {{ grid-template-columns: repeat(2, minmax(0, 1fr)); }} }}
   @media (max-width: 720px)  {{ .wrap, .bar-in {{ padding-left: 20px; padding-right: 20px; }}
@@ -168,8 +167,6 @@ HTML = f"""<!doctype html>
         </div>
       </div>
     </div>
-    <p class="note">Hover does not exist on a phone, so mobile gets the still only &mdash;
-      the still has to carry the test on its own.</p>
   </section>
 </div>
 
