@@ -14,15 +14,11 @@
          font-family: 'Jost','Gordita','Helvetica Neue',Arial,sans-serif;
          -webkit-font-smoothing: antialiased; }
   .wrap { max-width: 1320px; margin: 0 auto; padding: 0 40px 96px; }
-  .wrap.head { padding-bottom: 0; }
 
-  header { padding: 72px 0 0; }
-  h1 { font-size: 34px; font-weight: 500; letter-spacing: -.01em; margin: 0 0 10px; color: #000000; }
-  .lede { font-size: 16px; line-height: 1.65; color: #6a6a6a; margin: 0; max-width: 660px; }
 
   .bar { position: sticky; top: 0; z-index: 20; background: rgba(251,251,251,.92);
-          backdrop-filter: blur(10px); border-bottom: 1px solid #e8e8e8; margin-top: 36px; }
-  .bar-in { max-width: 1320px; margin: 0 auto; padding: 16px 40px;
+          backdrop-filter: blur(10px); border-bottom: 1px solid #e8e8e8; }
+  .bar-in { max-width: 1320px; margin: 0 auto; padding: 20px 40px;
              display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
   .switch { display: inline-flex; background: #ededed; border-radius: 999px; padding: 4px; gap: 4px; }
   .switch button { font: inherit; font-size: 14px; font-weight: 600; letter-spacing: .04em;
@@ -30,10 +26,8 @@
                     border-radius: 999px; background: transparent; color: #7a7a7a;
                     transition: background .16s ease, color .16s ease; }
   .switch button[aria-pressed="true"] { background: #1d1d1d; color: #fff; }
-  .hint { font-size: 14px; color: #8a8a8a; }
-  .hint b { color: #1d1d1d; font-weight: 600; }
 
-  section { padding-top: 64px; }
+  section { padding-top: 56px; }
   .sec-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 28px; }
   .sec-head h2 { font-size: 13px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
                   color: #9a9a9a; margin: 0; }
@@ -89,19 +83,10 @@
 
   @media (max-width: 1080px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   @media (max-width: 720px)  { .wrap, .bar-in { padding-left: 20px; padding-right: 20px; }
-                                .store-h2 { font-size: 28px; } h1 { font-size: 26px; } }
+                                .store-h2 { font-size: 28px; } }
 </style>
 </head>
 <body class="control">
-
-<div class="wrap head">
-  <header>
-    <h1>Product card test &mdash; close-up on the eye</h1>
-    <p class="lede">Today the card leads with the box. This swaps it for the close-up already
-      sitting on the product page &mdash; the shot that answers &ldquo;what will these look like
-      on me?&rdquo; before anyone clicks.</p>
-  </header>
-</div>
 
 <div class="bar">
   <div class="bar-in">
@@ -109,7 +94,6 @@
       <button id="b-control" aria-pressed="true">Control</button>
       <button id="b-variant" aria-pressed="false">Variant</button>
     </div>
-    <span class="hint" id="hint">Showing the cards as they are today.</span>
   </div>
 </div>
 
@@ -335,7 +319,7 @@
 </div>
 
 <script>
-  var body = document.body, hint = document.getElementById('hint');
+  var body = document.body;
   var bC = document.getElementById('b-control'), bV = document.getElementById('b-variant');
 
   // GIFs are only fetched once the variant is first shown, so the page opens fast
@@ -354,9 +338,6 @@
     body.classList.toggle('control', !variant);
     bV.setAttribute('aria-pressed', String(variant));
     bC.setAttribute('aria-pressed', String(!variant));
-    hint.innerHTML = variant
-      ? 'Hover a card &mdash; the clip plays. <b>That is the whole change.</b>'
-      : 'Showing the cards as they are today.';
     if (variant) loadGifs();
   }
   bC.addEventListener('click', function () { show(false); });
